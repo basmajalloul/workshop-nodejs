@@ -6,7 +6,7 @@ dotenv.config()
 require("./db.js")
 
 const app = express()
-const user = require("./routes/user")
+const user = require('./routes/user')
 
 app.use(morgan("common"))
 app.use(bodyparser.json())
