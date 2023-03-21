@@ -25,7 +25,7 @@ const signin = async (req,res) => {
 
     } catch(err){
 
-        res.stauts(404).send({success:false, message: err})
+        res.statuts(404).send({success:false, message: err})
 
     }
 }
@@ -41,18 +41,18 @@ const register = async (req,res) => {
         const user = await User.findOne({email})
 
         if(user) return res.status(404).send({
-            success:false,
-            message:"user already exists"
+            success : false,
+            message: "user already exists"
         })
 
         const newUser = new User ({email,password,firstname,lastname})
 
         const createdUser = await newUser.save()
 
-        return res.staus(201).send({success:true,message:"Account created successfully", user: createdUser})
+        return res.status(201).send({success:true,message:"Account created successfully", user: createdUser})
 
     } catch(err) {
-
+        console.log(err)
         res.status(404).send({
             success:false, 
             message : err
